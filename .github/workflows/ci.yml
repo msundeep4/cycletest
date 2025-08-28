@@ -1,29 +1,13 @@
-    name: Node.js CI
+    name: Hello World Workflow
 
-    on:
-      push:
-        branches: [ "main" ]
-      pull_request:
-        branches: [ "main" ]
+    on: [push] # This workflow runs on every push to the repository
 
     jobs:
       build:
-        runs-on: ubuntu-latest
+        name: Say Hello
+        runs-on: ubuntu-latest # The type of machine to run the job on
 
         steps:
-        - name: Checkout Code
-          uses: actions/checkout@v4
-
-        - name: Set up Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: '20.x'
-
-        - name: Install Dependencies
-          run: npm install
-
-        - name: Run Tests
-          run: npm test
-
-        - name: Build Project
-          run: npm run build
+          - uses: actions/checkout@v4 # Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+          - name: Print Hello Message
+            run: echo "Hello from GitHub Actions!" # Executes a shell command
